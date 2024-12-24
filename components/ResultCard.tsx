@@ -1,4 +1,12 @@
-export default function ResultCard({ result }: { result: any }) {
+type ResultProps = {
+  result: {
+    title: string;
+    link: string;
+    snippet: string;
+  };
+};
+
+export default function ResultCard({ result }: ResultProps) {
   return (
     <div className="p-4 border rounded-lg shadow-md bg-white hover:shadow-lg transition">
       <a href={result.link} target="_blank" rel="noopener noreferrer">
