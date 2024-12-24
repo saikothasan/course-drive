@@ -5,8 +5,14 @@ import Navbar from "../components/Navbar";
 import SearchBar from "../components/SearchBar";
 import ResultCard from "../components/ResultCard";
 
+type SearchResult = {
+  title: string;
+  link: string;
+  snippet: string;
+};
+
 export default function Home() {
-  const [results, setResults] = useState<any[]>([]);
+  const [results, setResults] = useState<SearchResult[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -22,7 +28,7 @@ export default function Home() {
       } else {
         setResults(data.items || []);
       }
-    } catch (err) {
+    } catch {
       setError("Failed to fetch results. Please try again.");
     } finally {
       setLoading(false);
